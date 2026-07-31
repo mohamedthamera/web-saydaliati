@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("saydalati-theme");
+        var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
+  <title>سياسة الخصوصية | صيدليتي</title>
+  <meta name="description" content="سياسة الخصوصية لتطبيق صيدليتي — كيف نحمي بياناتك الطبية ونحافظ على خصوصيتك." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1976D2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231976D2'/%3E%3Cstop offset='1' stop-color='%239C27B0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M32 14v36M14 32h36' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container" aria-label="التنقل الرئيسي">
+      <a href="index.html" class="brand" aria-label="صيدليتي - الرئيسية">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+        </span>
+        <span class="brand-name">صيدليتي</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link" href="index.html#hero">الرئيسية</a></li>
+        <li><a class="nav-link" href="index.html#features">المميزات</a></li>
+        <li><a class="nav-link" href="index.html#how-it-works">كيف يعمل</a></li>
+        <li><a class="nav-link" href="index.html#screenshots">لقطات التطبيق</a></li>
+        <li><a class="nav-link" href="index.html#faq">الأسئلة الشائعة</a></li>
+        <li><a class="nav-link active" href="privacy-policy.html">سياسة الخصوصية</a></li>
+        <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="التبديل إلى الوضع الليلي" aria-pressed="false">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+        </button>
+        <a href="index.html#download" class="btn btn-primary btn-sm nav-cta">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+          تحميل التطبيق
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="icon-burger" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a class="nav-link" href="index.html#hero">الرئيسية</a></li>
+      <li><a class="nav-link" href="index.html#features">المميزات</a></li>
+      <li><a class="nav-link" href="index.html#how-it-works">كيف يعمل</a></li>
+      <li><a class="nav-link" href="index.html#screenshots">لقطات التطبيق</a></li>
+      <li><a class="nav-link" href="index.html#faq">الأسئلة الشائعة</a></li>
+      <li><a class="nav-link active" href="privacy-policy.html">سياسة الخصوصية</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+    </ul>
+    <a href="index.html#download" class="btn btn-primary btn-lg mobile-menu-cta">تحميل التطبيق</a>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-3"></span>
+      </div>
+      <div class="container">
+        <nav class="breadcrumb reveal visible" aria-label="مسار التنقل">
+          <a href="index.html">الرئيسية</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          <span>سياسة الخصوصية</span>
+        </nav>
+        <h1 class="page-hero-title reveal visible">سياسة الخصوصية</h1>
+        <p class="page-hero-sub reveal visible">خصوصيتك مسؤوليتنا الأولى — إليك كيف نتعامل مع بياناتك بعناية وشفافية.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container prose-wrap">
+        <article class="prose-card">
+          <div class="prose">
+            <span class="update-note">آخر تحديث: 1 يناير 2026</span>
+
+            <h2>مقدمة</h2>
+            <p>نحن في «صيدليتي» نلتزم بحماية خصوصيتك والبيانات الطبية الحساسة التي تشاركها معنا. توضح هذه السياسة أنواع البيانات التي نجمعها، وكيف نستخدمها، وكيف نحميها، وحقوقك بخصوصها.</p>
+
+            <h2>البيانات التي نجمعها</h2>
+            <p>نجمع الحد الأدنى الضروري من البيانات لتقديم خدمتنا، وتشمل:</p>
+            <ul>
+              <li>بيانات الحساب: الاسم، رقم الهاتف، عنوان البريد الإلكتروني.</li>
+              <li>البيانات الطبية: صور الوصفات الطبية التي ترفعها وقائمة الأدوية.</li>
+              <li>بيانات الموقع: موقعك التقريبي لعرض الصيدليات القريبة (بموافقتك).</li>
+              <li>بيانات الاستخدام: تفاصيل الطلبات والعروض وتفضيلاتك داخل التطبيق.</li>
+            </ul>
+
+            <h2>كيف نستخدم بياناتك</h2>
+            <p>نستخدم بياناتك للأغراض التالية حصرًا:</p>
+            <ul>
+              <li>معالجة وصفاتك الطبية وإرسالها إلى الصيدليات المعتمدة.</li>
+              <li>عرض الصيدليات القريبة منك وتسهيل عملية التوصيل.</li>
+              <li>تحسين تجربتك وتطوير ميزات التطبيق.</li>
+              <li>إرسال إشعارات الطلبات والعروض — ولا نرسل أي رسائل تسويقية دون موافقتك.</li>
+            </ul>
+
+            <h2>حماية البيانات</h2>
+            <p>نستخدم أحدث معايير الأمان لحماية بياناتك:</p>
+            <ul>
+              <li>تشفير جميع البيانات أثناء النقل والتخزين (TLS / AES-256).</li>
+              <li>تقييد الوصول إلى بياناتك على الموظفين المصرح لهم فقط.</li>
+              <li>مراجعة أمنية دورية لأنظمتنا وخوادمنا.</li>
+            </ul>
+
+            <h2>مشاركة البيانات</h2>
+            <p>لا نبيع بياناتك أبدًا. ولا نشارك وصفاتك الطبية إلا مع الصيدليات المعتمدة المرتبطة بطلبك، وفق ما ينص عليه القانون العراقي لحماية البيانات والخصوصية الطبية.</p>
+
+            <h2>احتفاظنا بالبيانات</h2>
+            <p>نحتفظ ببياناتك طوال فترة استخدامك للخدمة. يمكنك حذف حسابك في أي وقت من إعدادات التطبيق، وعندها نحذف جميع بياناتك الطبية نهائيًا خلال 30 يومًا.</p>
+
+            <h2>حقوقك</h2>
+            <ul>
+              <li>الاطلاع على بياناتك الشخصية في أي وقت.</li>
+              <li>تصحيح أو تحديث معلوماتك غير الدقيقة.</li>
+              <li>حذف حسابك وجميع بياناتك نهائيًا.</li>
+              <li>سحب موافقتك على مشاركة الموقع في أي وقت.</li>
+            </ul>
+
+            <h2>خصوصية الأطفال</h2>
+            <p>خدماتنا موجهة للأشخاص فوق 18 عامًا. لا نجمع بيانات القاصرين عن قصد، وإذا اكتشفنا ذلك سنحذفها فورًا.</p>
+
+            <h2>التغييرات على هذه السياسة</h2>
+            <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سنخطرك بأي تغيير جوهري عبر التطبيق أو البريد الإلكتروني قبل 30 يومًا من سريانه.</p>
+
+            <h2>تواصل معنا</h2>
+            <p>لأي استفسار بخصوص هذه السياسة أو بياناتك، راسلنا على <a href="mailto:support@saydalati.iq">support@saydalati.iq</a> أو عبر صفحة <a href="contact.html">تواصل معنا</a>.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path d="M0,50 C240,90 420,10 720,40 C1020,70 1220,90 1440,30 L1440,90 L0,90 Z" fill="#1A1A2E"/>
+      </svg>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand-light" aria-label="صيدليتي - الرئيسية">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+          </span>
+          <span class="brand-name">صيدليتي</span>
+        </a>
+        <p class="footer-desc">منصة عراقية تربطك بأقرب الصيدليات. ارفع وصفتك، قارن العروض، واختر الأفضل — صحتك تستحق الأسهل.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="فيسبوك"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.5 1.5-1.5h1.4V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3Z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="انستغرام"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="#" class="social-btn" aria-label="تويتر"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.7 3H21l-7.3 8.3L22.3 21h-6.7l-5.3-6.2L4.3 21H1l7.8-8.9L1.8 3h6.9l4.8 5.7L17.7 3Zm-1.2 16h1.9L6.6 4.9H4.6L16.5 19Z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="واتساب"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1a16 16 0 0 1-1.7-.6c-3-1.3-5-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .2 0 .9-.3 1.6Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="index.html#hero">الرئيسية</a></li>
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+          <li><a href="index.html#faq">الأسئلة الشائعة</a></li>
+          <li><a href="index.html#screenshots">لقطات التطبيق</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>التطبيق</h4>
+        <ul>
+          <li><a href="index.html#download">تحميل للأندرويد</a></li>
+          <li><a href="index.html#download">تحميل للآيفون</a></li>
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms.html">الشروط والأحكام</a></li>
+          <li><a href="404.html">مركز المساعدة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+            <a href="mailto:support@saydalati.iq" dir="ltr">support@saydalati.iq</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <a href="tel:+9640000000000" dir="ltr">+964 000 000 0000</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>بغداد، العراق — شارع الكرادة</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© <span id="year">2026</span> صيدليتي — جميع الحقوق محفوظة.</p>
+        <p class="footer-links">
+          <a href="privacy-policy.html">سياسة الخصوصية</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html">الشروط والأحكام</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 14 7-7 7 7"/></svg>
+  </button>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("saydalati-theme");
+        var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
+  <title>صيدليتي | احصل على دوائك بسهولة من أقرب الصيدليات</title>
+  <meta name="description" content="صيدليتي — منصة عراقية تربطك بأقرب الصيدليات. ارفع وصفاتك الطبية، استلم العروض، قارن الأسعار واختر الأفضل، واستلم دواءك أينما كنت." />
+  <meta name="keywords" content="صيدليتي, صيدلية, وصفة طبية, العراق, بغداد, أدوية, توصيل دواء" />
+  <meta name="author" content="Saydalati" />
+  <meta name="theme-color" content="#1976D2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="صيدليتي | احصل على دوائك بسهولة من أقرب الصيدليات" />
+  <meta property="og:description" content="ارفع وصفتك الطبية، استلم عروض الصيدليات القريبة، وقارن الأسعار واختر الأفضل." />
+  <meta property="og:locale" content="ar_IQ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231976D2'/%3E%3Cstop offset='1' stop-color='%239C27B0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M32 14v36M14 32h36' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "صيدليتي",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Android, iOS",
+    "description": "منصة عراقية تربط المرضى بأقرب الصيدليات عبر رفع الوصفة الطبية واستلام أفضل العروض.",
+    "inLanguage": "ar-IQ",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IQD" }
+  }
+  </script>
+</head>
+<body class="on-home">
+  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container" aria-label="التنقل الرئيسي">
+      <a href="index.html" class="brand" aria-label="صيدليتي - الرئيسية">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+        </span>
+        <span class="brand-name">صيدليتي</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link active" href="index.html#hero">الرئيسية</a></li>
+        <li><a class="nav-link" href="index.html#features">المميزات</a></li>
+        <li><a class="nav-link" href="index.html#how-it-works">كيف يعمل</a></li>
+        <li><a class="nav-link" href="index.html#screenshots">لقطات التطبيق</a></li>
+        <li><a class="nav-link" href="index.html#faq">الأسئلة الشائعة</a></li>
+        <li><a class="nav-link" href="privacy-policy.html">سياسة الخصوصية</a></li>
+        <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="التبديل إلى الوضع الليلي" aria-pressed="false">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+        </button>
+        <a href="#download" class="btn btn-primary btn-sm nav-cta">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+          تحميل التطبيق
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="icon-burger" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a class="nav-link active" href="index.html#hero">الرئيسية</a></li>
+      <li><a class="nav-link" href="index.html#features">المميزات</a></li>
+      <li><a class="nav-link" href="index.html#how-it-works">كيف يعمل</a></li>
+      <li><a class="nav-link" href="index.html#screenshots">لقطات التطبيق</a></li>
+      <li><a class="nav-link" href="index.html#faq">الأسئلة الشائعة</a></li>
+      <li><a class="nav-link" href="privacy-policy.html">سياسة الخصوصية</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+    </ul>
+    <a href="#download" class="btn btn-primary btn-lg mobile-menu-cta">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+      تحميل التطبيق
+    </a>
+  </div>
+
+  <main id="main">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+        <span class="blob blob-4"></span>
+        <span class="blob blob-5"></span>
+        <span class="float-shape shape-pill-1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="6"/><path d="M6 12h12"/></svg>
+        </span>
+        <span class="float-shape shape-cross-1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="#42A5F5" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>
+        </span>
+        <span class="float-shape shape-pill-2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#9C27B0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="6"/><path d="M6 12h12"/></svg>
+        </span>
+        <span class="float-shape shape-cross-2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="#4CAF50" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>
+        </span>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge glass reveal" data-delay="0">
+            <span class="badge-dot"></span>
+            المنصة الصحية الأولى في العراق
+          </span>
+
+          <h1 class="hero-title reveal" data-delay="100">
+            احصل على دوائك <span class="gradient-text">بسهولة</span> من أقرب الصيدليات
+          </h1>
+
+          <p class="hero-subtitle reveal" data-delay="200">
+            حمّل وصفتك الطبية، واستقبل عروض الصيدليات القريبة منك، وقارن الأسعار واختر الأفضل — كل ذلك في دقائق معدودة من هاتفك.
+          </p>
+
+          <div class="hero-actions reveal" data-delay="300">
+            <a href="#download" class="btn btn-primary btn-lg">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 13 12 3.6 21.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm13.4 7.3L6.9 2.9l8.3 8.3 1.8-1.6Zm0 4.8-1.8-1.6-8.3 8.3 10.1-6.7Zm1.5-2.2 3 2c.9.6.9 1.9 0 2.5l-3 2v-6.5Z"/></svg>
+              تحميل للأندرويد
+            </a>
+            <a href="#download" class="btn btn-dark btn-lg">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.75 2.25-4.07 2.35-4.14-1.28-1.87-3.27-2.13-3.98-2.16-1.69-.17-3.3 1-4.16 1-.86 0-2.19-.97-3.6-.94-1.85.03-3.56 1.08-4.51 2.74-1.93 3.34-.49 8.28 1.38 10.99.92 1.32 2.01 2.81 3.45 2.76 1.38-.06 1.9-.89 3.57-.89 1.67 0 2.14.89 3.6.86 1.49-.02 2.43-1.35 3.34-2.68 1.05-1.54 1.49-3.03 1.51-3.11-.03-.01-2.89-1.11-2.95-4.43ZM14.19 4.28c.76-.92 1.28-2.2 1.14-3.48-1.1.04-2.44.73-3.23 1.66-.71.82-1.33 2.14-1.16 3.4 1.23.1 2.49-.63 3.25-1.58Z"/></svg>
+              تحميل للآيفون
+            </a>
+            <button class="btn btn-ghost btn-lg" id="watchDemo" aria-haspopup="dialog">
+              <span class="btn-play">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              </span>
+              مشاهدة العرض
+            </button>
+          </div>
+
+          <div class="hero-proof reveal" data-delay="400">
+            <div class="proof-avatars" aria-hidden="true">
+              <span class="proof-avatar" style="--c:#1976D2">س</span>
+              <span class="proof-avatar" style="--c:#9C27B0">م</span>
+              <span class="proof-avatar" style="--c:#4CAF50">ع</span>
+              <span class="proof-avatar" style="--c:#FFA726">ن</span>
+              <span class="proof-avatar proof-avatar-more">+</span>
+            </div>
+            <div class="proof-text">
+              <div class="proof-stars" aria-label="تقييم 4.8 من 5">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFA726" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFA726" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFA726" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFA726" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="#FFA726" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+              </div>
+              <p>أكثر من <strong>50,000</strong> مستخدم يثقون بنا في بغداد والبصرة وأربيل والموصل</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="hero-visual reveal" data-delay="250">
+          <div class="hero-glow" aria-hidden="true"></div>
+
+          <div class="float-chip chip-offer" aria-hidden="true">
+            <span class="chip-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+            </span>
+            <div>
+              <strong>وصل عرض جديد</strong>
+              <small>خصم 25% من صيدلية المدينة</small>
+            </div>
+          </div>
+
+          <div class="phone hero-phone" id="heroPhone" tabindex="0" aria-label="معاينة واجهة تطبيق صيدليتي">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app-statusbar">
+                <span>9:41</span>
+                <span class="app-icons" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M8 12v-2a4 4 0 0 1 8 0v2"/><rect x="5" y="12" width="14" height="8" rx="2.5"/></svg>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><rect x="2" y="10" width="3" height="10" rx="1"/><rect x="7.5" y="6" width="3" height="14" rx="1"/><rect x="13" y="2.5" width="3" height="17.5" rx="1"/><rect x="18.5" y="8" width="3" height="12" rx="1"/></svg>
+                </span>
+              </div>
+
+              <div class="app-header">
+                <div>
+                  <small>مساء الخير 👋 أهلاً بك</small>
+                  <strong>أحمد، لديك 3 عروض</strong>
+                </div>
+                <span class="app-avatar">أ</span>
+              </div>
+
+              <div class="app-search">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                ابحث عن دواء أو صيدلية…
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-head">
+                  <span class="app-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M8 11h8M8 15h5"/></svg>
+                  </span>
+                  <div>
+                    <strong>وصفة جديدة</strong>
+                    <small>تم رفعها واستلامها بنجاح</small>
+                  </div>
+                  <span class="app-tag">جديد</span>
+                </div>
+                <div class="app-pills">
+                  <span class="mini-pill p-1"></span>
+                  <span class="mini-pill p-2"></span>
+                  <span class="mini-pill p-3"></span>
+                </div>
+                <div class="app-card-foot">
+                  <span>12 صيدلية تلقّت طلبك</span>
+                  <span class="app-time">منذ 5 دقائق</span>
+                </div>
+              </div>
+
+              <div class="app-offers">
+                <div class="app-offers-head">
+                  <strong>أفضل العروض</strong>
+                  <span>عرض الكل</span>
+                </div>
+                <div class="app-offer">
+                  <span class="offer-store">
+                    <span class="offer-logo" style="--oc:#1976D2">ص</span>
+                    صيدلية المدينة
+                  </span>
+                  <span class="offer-price">8,500 د.ع</span>
+                </div>
+                <div class="app-offer best">
+                  <span class="offer-store">
+                    <span class="offer-logo" style="--oc:#9C27B0">ص</span>
+                    صيدلية الأمانة
+                    <span class="offer-badge">الأفضل</span>
+                  </span>
+                  <span class="offer-price">7,900 د.ع</span>
+                </div>
+                <div class="app-offer">
+                  <span class="offer-store">
+                    <span class="offer-logo" style="--oc:#4CAF50">ص</span>
+                    صيدلية النور
+                  </span>
+                  <span class="offer-price">9,200 د.ع</span>
+                </div>
+              </div>
+
+              <div class="app-tabbar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a6 6 0 0 0-6 6v5l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-6-6Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-chip chip-delivered" aria-hidden="true">
+            <span class="chip-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 13 5 5L20 7"/></svg>
+            </span>
+            <div>
+              <strong>تم استلام الدواء</strong>
+              <small>صيدلية المدينة · التوصيل مجاني</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG wave separator -->
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+          <path d="M0,72 C240,110 420,20 720,44 C1020,68 1220,110 1440,62 L1440,110 L0,110 Z" fill="#F5F7FA"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===================== Stats / Trust ===================== -->
+    <section class="stats section-sm" aria-label="أرقام وإحصائيات">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat reveal" data-delay="0">
+            <span class="stat-value" data-count="250" data-suffix="+">0</span>
+            <span class="stat-label">صيدلية شريكة</span>
+          </div>
+          <div class="stat reveal" data-delay="100">
+            <span class="stat-value" data-count="50000" data-suffix="+">0</span>
+            <span class="stat-label">مستخدم نشط</span>
+          </div>
+          <div class="stat reveal" data-delay="200">
+            <span class="stat-value" data-count="120000" data-suffix="+">0</span>
+            <span class="stat-label">وصفة طبية منجزة</span>
+          </div>
+          <div class="stat reveal" data-delay="300">
+            <span class="stat-value" data-count="98" data-suffix="%">0</span>
+            <span class="stat-label">نسبة رضا المستخدمين</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Features ===================== -->
+    <section class="features section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="badge glass reveal">مميزات التطبيق</span>
+          <h2 class="section-title reveal" data-delay="100">كل ما تحتاجه، <span class="gradient-text">في تطبيق واحد</span></h2>
+          <p class="section-sub reveal" data-delay="200">من رفع الوصفة حتى استلام الدواء، صممنا كل تفصيلة لتوفر عليك الوقت والجهد.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal" data-delay="0">
+            <span class="feature-icon" style="--fc:#1976D2">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M8 11h8M8 15h5"/></svg>
+            </span>
+            <h3>رفع الوصفة</h3>
+            <p>التقط صورة لوصفتك الطبية وارفعها بثوانٍ، أو أدخلها يدويًا إذا كانت إلكترونية.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="100">
+            <span class="feature-icon" style="--fc:#9C27B0">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v3a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6Z"/><path d="M3 11V7a2 2 0 0 1 2-2h5"/><path d="M9 6h6l2 3"/></svg>
+            </span>
+            <h3>استلام العروض</h3>
+            <p>تصل الصيدليات القريبة على طلبك وتنافس بعروضها — أنت تقارن في مكان واحد.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="200">
+            <span class="feature-icon" style="--fc:#4CAF50">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>
+            </span>
+            <h3>اختيار أفضل عرض</h3>
+            <p>قارن الأسعار ووقت التوصيل وتقييم الصيدليات، ثم اختر العرض الأنسب لك بضغطة واحدة.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="0">
+            <span class="feature-icon" style="--fc:#42A5F5">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5Z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg>
+            </span>
+            <h3>الدردشة</h3>
+            <p>تواصل مباشرة مع الصيدلية للاستفسار عن توفر الدواء أو التفاصيل قبل التأكيد.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="100">
+            <span class="feature-icon" style="--fc:#FFA726">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>
+            </span>
+            <h3>إشعارات ذكية</h3>
+            <p>تنبيهات فورية عند وصول عرض جديد، أو تغيّر حالة طلبك، أو موعد استلام الدواء.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="200">
+            <span class="feature-icon" style="--fc:#EF5350">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3>الصيدليات القريبة</h3>
+            <p>نحدد موقعك ونعرض لك الصيدليات الأقرب مع ساعات الدوام ومدى توفر الدواء.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="0">
+            <span class="feature-icon" style="--fc:#1565C0">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+            </span>
+            <h3>إدارة الطلبات</h3>
+            <p>تتبع حالة طلباتك كلها في لوحة واحدة: قيد المراجعة، تم التأكيد، في الطريق، تم التسليم.</p>
+          </article>
+
+          <article class="feature-card reveal" data-delay="100">
+            <span class="feature-icon" style="--fc:#9C27B0">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M3 10l2.5-5h13L21 10"/><path d="M3 10h18"/><path d="M9 20v-3h6v3"/></svg>
+            </span>
+            <h3>حساب خاص بالصيدليات</h3>
+            <p>لوحة مخصصة للصيدليات لاستقبال الطلبات، وإرسال العروض، وإدارة المخزون والموظفين.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== How It Works ===================== -->
+    <section class="how section section-alt" id="how-it-works">
+      <div class="section-bg-blobs" aria-hidden="true">
+        <span class="blob blob-2"></span>
+        <span class="blob blob-4"></span>
+      </div>
+      <div class="container">
+        <div class="section-head">
+          <span class="badge glass reveal">كيف يعمل التطبيق</span>
+          <h2 class="section-title reveal" data-delay="100">من الوصفة إلى الدواء في <span class="gradient-text">5 خطوات</span></h2>
+          <p class="section-sub reveal" data-delay="200">رحلة سلسة وآمنة، صممناها لتكون أسرع من الذهاب إلى الصيدلية.</p>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <span class="timeline-step">الخطوة 1</span>
+              <h3>إنشاء حساب</h3>
+              <p>سجّل ببياناتك الأساسية في أقل من دقيقة، أو عبر رقم هاتفك بتحقق فوري وآمن.</p>
+            </div>
+            <span class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <div class="timeline-spacer" aria-hidden="true"></div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-spacer" aria-hidden="true"></div>
+            <span class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M8 11h8M8 15h5"/></svg>
+            </span>
+            <div class="timeline-card">
+              <span class="timeline-step">الخطوة 2</span>
+              <h3>رفع الوصفة</h3>
+              <p>صوّر وصفتك الطبية أو ارفع نسخة إلكترونية، وتأكد فريقنا من صحتها فورًا.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <span class="timeline-step">الخطوة 3</span>
+              <h3>استلام العروض</h3>
+              <p>تتلقى الصيدليات القريبة طلبك وترسل لك عروضها مع الأسعار ووقت التوصيل.</p>
+            </div>
+            <span class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v3a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6Z"/><path d="M3 11V7a2 2 0 0 1 2-2h5"/><path d="M9 6h6l2 3"/></svg>
+            </span>
+            <div class="timeline-spacer" aria-hidden="true"></div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-spacer" aria-hidden="true"></div>
+            <span class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>
+            </span>
+            <div class="timeline-card">
+              <span class="timeline-step">الخطوة 4</span>
+              <h3>اختيار الصيدلية</h3>
+              <p>قارن بين العروض واقرأ تقييمات المستخدمين واختر الصيدلية التي تناسبك.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <span class="timeline-step">الخطوة 5</span>
+              <h3>استلام الدواء</h3>
+              <p>استلم طلبك من الصيدلية أو توصيلًا حتى باب منزلك، وادفع بالطريقة التي تناسبك.</p>
+            </div>
+            <span class="timeline-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 22h6a3 3 0 0 0 3-3v-3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v3a3 3 0 0 0 3 3Z"/><path d="M7 15V6a5 5 0 0 1 10 0v9"/><path d="M7 9h10"/></svg>
+            </span>
+            <div class="timeline-spacer" aria-hidden="true"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Screenshots ===================== -->
+    <section class="screens section" id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <span class="badge glass reveal">لقطات التطبيق</span>
+          <h2 class="section-title reveal" data-delay="100">تجربة تصميم <span class="gradient-text">أنيقة وسلسة</span></h2>
+          <p class="section-sub reveal" data-delay="200">واجهة عربية واضحة صُممت بعناية لتجعل رحلتك الطبية سهلة وممتعة.</p>
+        </div>
+
+        <div class="screens-grid">
+          <!-- Screen 1: الرئيسية -->
+          <div class="screen-item reveal" data-delay="0">
+            <div class="phone phone-lg">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="app-statusbar"><span>9:41</span><span></span></div>
+                <div class="app-header">
+                  <div><small>الرئيسية</small><strong>أحمد</strong></div>
+                  <span class="app-avatar">أ</span>
+                </div>
+                <div class="app-search">ابحث عن دواء أو صيدلية…</div>
+                <div class="app-card">
+                  <div class="app-card-head">
+                    <span class="app-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M8 11h8M8 15h5"/></svg></span>
+                    <div><strong>وصفة جديدة</strong><small>تم رفعها بنجاح</small></div>
+                    <span class="app-tag">جديد</span>
+                  </div>
+                  <div class="app-pills"><span class="mini-pill p-1"></span><span class="mini-pill p-2"></span></div>
+                  <div class="app-card-foot"><span>8 صيدليات تلقّت طلبك</span><span class="app-time">الآن</span></div>
+                </div>
+                <div class="app-offers">
+                  <div class="app-offers-head"><strong>الصيدليات القريبة</strong><span>عرض الكل</span></div>
+                  <div class="app-offer"><span class="offer-store"><span class="offer-logo" style="--oc:#1976D2">ص</span>صيدلية المدينة</span><span class="offer-dist">300 م</span></div>
+                  <div class="app-offer"><span class="offer-store"><span class="offer-logo" style="--oc:#4CAF50">ص</span>صيدلية الأمانة</span><span class="offer-dist">750 م</span></div>
+                  <div class="app-offer"><span class="offer-store"><span class="offer-logo" style="--oc:#9C27B0">ص</span>صيدلية النور</span><span class="offer-dist">1.2 كم</span></div>
+                </div>
+                <div class="app-tabbar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a6 6 0 0 0-6 6v5l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-6-6Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="screen-caption">الرئيسية الذكية</h3>
+            <p>كل ما يخصك في شاشة واحدة</p>
+          </div>
+
+          <!-- Screen 2: العروض -->
+          <div class="screen-item reveal" data-delay="150">
+            <div class="phone phone-lg">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="app-statusbar"><span>9:41</span><span></span></div>
+                <div class="app-header">
+                  <div><small>طلبي #4521</small><strong>عروض الوصفة</strong></div>
+                  <span class="app-tag app-tag-green">3 عروض</span>
+                </div>
+                <div class="app-offers app-offers-full">
+                  <div class="app-offer best">
+                    <span class="offer-store"><span class="offer-logo" style="--oc:#9C27B0">ص</span>صيدلية الأمانة</span>
+                    <div class="offer-meta"><span class="offer-badge">الأفضل</span><span class="offer-price">7,900 د.ع</span></div>
+                    <small>توصيل خلال 25 دقيقة · 4.9 ★</small>
+                  </div>
+                  <div class="app-offer">
+                    <span class="offer-store"><span class="offer-logo" style="--oc:#1976D2">ص</span>صيدلية المدينة</span>
+                    <div class="offer-meta"><span class="offer-price">8,500 د.ع</span></div>
+                    <small>توصيل خلال 40 دقيقة · 4.7 ★</small>
+                  </div>
+                  <div class="app-offer">
+                    <span class="offer-store"><span class="offer-logo" style="--oc:#4CAF50">ص</span>صيدلية النور</span>
+                    <div class="offer-meta"><span class="offer-price">9,200 د.ع</span></div>
+                    <small>توصيل خلال ساعة · 4.6 ★</small>
+                  </div>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-foot"><span>وصفة: د. سعد الجبوري</span><span class="app-time">3 أدوية</span></div>
+                </div>
+                <div class="app-tabbar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a6 6 0 0 0-6 6v5l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-6-6Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="screen-caption">مقارنة العروض</h3>
+            <p>قارن الأسعار ووقت التوصيل</p>
+          </div>
+
+          <!-- Screen 3: الدردشة -->
+          <div class="screen-item reveal" data-delay="300">
+            <div class="phone phone-lg">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="app-statusbar"><span>9:41</span><span></span></div>
+                <div class="app-header">
+                  <div><small>دردشة</small><strong>صيدلية المدينة</strong></div>
+                  <span class="app-online">متصل الآن</span>
+                </div>
+                <div class="app-chat">
+                  <div class="msg msg-in">أهلاً بك! دواؤك متوفر لدينا ✅<br />هل تريد التوصيل أم الاستلام؟</div>
+                  <div class="msg msg-out">السلام عليكم، التوصيل من فضلكم 🙏</div>
+                  <div class="msg msg-in">تمام، التوصيل خلال 25 دقيقة وبدون أجرة 😊</div>
+                  <div class="msg msg-out">ممتاز، أكدوا الطلب من فضلكم</div>
+                  <div class="msg msg-out">شكراً لكم 🌹</div>
+                </div>
+                <div class="app-input">
+                  <span>اكتب رسالتك…</span>
+                  <span class="app-send" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 12 20 4l-4 16-4-6z"/></svg>
+                  </span>
+                </div>
+                <div class="app-tabbar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a6 6 0 0 0-6 6v5l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-6-6Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="screen-caption">دردشة فورية</h3>
+            <p>تواصل مباشر مع الصيدلية</p>
+          </div>
+
+          <!-- Screen 4: الطلبات -->
+          <div class="screen-item reveal" data-delay="450">
+            <div class="phone phone-lg">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="app-statusbar"><span>9:41</span><span></span></div>
+                <div class="app-header">
+                  <div><small>طلباتي</small><strong>3 طلبات نشطة</strong></div>
+                  <span class="app-avatar">أ</span>
+                </div>
+                <div class="app-order">
+                  <div class="order-head"><span class="app-icon"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><strong>في الطريق</strong><span class="app-time">10 دقائق</span></div>
+                  <div class="order-progress"><span class="order-bar" style="--op:75%"></span></div>
+                  <small>صيدلية الأمانة → منزلي</small>
+                </div>
+                <div class="app-order">
+                  <div class="order-head"><span class="app-icon" style="--ic:#FFA726"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9h18v3a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6Z"/><path d="M3 11V7a2 2 0 0 1 2-2h5"/><path d="M9 6h6l2 3"/></svg></span><strong>بانتظار التأكيد</strong><span class="app-time">الآن</span></div>
+                  <small>صيدلية المدينة · طلب #4522</small>
+                </div>
+                <div class="app-order done">
+                  <div class="order-head"><span class="app-icon" style="--ic:#4CAF50"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg></span><strong>تم التسليم</strong><span class="app-time">أمس</span></div>
+                  <small>صيدلية النور · طلب #4510</small>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-foot"><span>إجمالي مشترياتك هذا الشهر</span><span class="offer-price">32,400 د.ع</span></div>
+                </div>
+                <div class="app-tabbar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3a6 6 0 0 0-6 6v5l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-6-6Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="screen-caption">تتبع الطلبات</h3>
+            <p>على دراية كاملة بطلبك</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Benefits ===================== -->
+    <section class="benefits section section-alt" id="benefits">
+      <div class="section-bg-blobs" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-5"></span>
+      </div>
+      <div class="container">
+        <div class="section-head">
+          <span class="badge glass reveal">لماذا صيدليتي؟</span>
+          <h2 class="section-title reveal" data-delay="100">تجربة أفضل من <span class="gradient-text">كل الطرق الأخرى</span></h2>
+          <p class="section-sub reveal" data-delay="200">وضعنا صحتك في المقام الأول، وبنينا كل شيء حولها.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card reveal" data-delay="0">
+            <span class="benefit-icon" style="--fc:#1976D2">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </span>
+            <h3>وفر وقتك وجهدك</h3>
+            <p>لا مزيد من التنقل بين الصيدليات بحثًا عن دوائك. اطلب من مكانك واستلم في أقرب وقت.</p>
+          </article>
+
+          <article class="benefit-card reveal" data-delay="100">
+            <span class="benefit-icon" style="--fc:#4CAF50">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 6.5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </span>
+            <h3>أسعار منافسة</h3>
+            <p>الصيدليات تتنافس بعروضها لتخدمك، فتحصل على أفضل سعر دون أي مفاوضات.</p>
+          </article>
+
+          <article class="benefit-card reveal" data-delay="200">
+            <span class="benefit-icon" style="--fc:#9C27B0">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v2"/></svg>
+            </span>
+            <h3>خصوصية تامة</h3>
+            <p>وصفاتك الطبية وبياناتك مشفّرة بالكامل، ولا يطلع عليها سوى الصيدليات المعتمدة.</p>
+          </article>
+
+          <article class="benefit-card reveal" data-delay="300">
+            <span class="benefit-icon" style="--fc:#42A5F5">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.5-9.5 9-9.5 9Z"/><path d="M9.5 12h.01M14.5 12h.01"/></svg>
+            </span>
+            <h3>صيدليات موثوقة</h3>
+            <p>نستقبل فقط الصيدليات المرخّصة رسميًا من وزارة الصحة، مع التحقق المستمر منها.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq section" id="faq">
+      <div class="container faq-container">
+        <div class="section-head">
+          <span class="badge glass reveal">الأسئلة الشائعة</span>
+          <h2 class="section-title reveal" data-delay="100">عندك سؤال؟ <span class="gradient-text">عندنا الجواب</span></h2>
+          <p class="section-sub reveal" data-delay="200">جمعنا لك أكثر الأسئلة شيوعًا حول تطبيق صيدليتي.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+              <span>كيف أرفع وصفتي الطبية؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq1">
+              <p>بعد إنشاء حسابك، اضغط على زر «رفع وصفة» والتقط صورة واضحة للوصفة الطبية أو ارفعها من معرض الصور. يمكنك أيضًا إدخال الأدوية يدويًا إذا كانت الوصفة إلكترونية. سيتحقق فريقنا من الوصفة خلال دقائق.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+              <span>هل التطبيق مجاني؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq2">
+              <p>نعم، تحميل التطبيق واستخدامه مجاني بالكامل للمرضى. لا نأخذ أي عمولة على رفع الوصفات أو استلام العروض. تدفع فقط ثمن الدواء للصيدلية، وقد تشمل بعض العروض رسوم توصيل اختيارية.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+              <span>كم يستغرق استلام الدواء؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq3">
+              <p>يعتمد ذلك على موقعك ووقت اليوم. في المتوسط، تصل العروض خلال دقائق، ويكون التوصيل خلال 15 إلى 60 دقيقة داخل المدن الرئيسية. يمكنك أيضًا اختيار الاستلام المباشر من الصيدلية.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+              <span>هل بياناتي الطبية آمنة؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq4">
+              <p>بالتأكيد. جميع بياناتك ووصفاتك مشفّرة بأعلى معايير الأمان، ولا يطلع عليها سوى الصيدليات المعتمدة المرتبطة بطلبك. نحن لا نشارك بياناتك مع أي جهة خارجية، ويمكنك حذف بياناتك في أي وقت.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+              <span>هل يمكن استخدام التطبيق خارج العراق؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq5">
+              <p>حاليًا يعمل التطبيق داخل العراق فقط، ونخطط للتوسع إلى مدن وبلدان جديدة قريبًا. حتى ذلك الحين، يمكنك تصفح التطبيق ومعرفة الصيدليات المتوفرة في منطقتك.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+              <span>ماذا أفعل في حالة طارئة؟</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq6">
+              <p>صيدليتي منصة لتسهيل الحصول على الأدوية وليست بديلًا عن الخدمات الطارئة. في حالات الطوارئ الصحية، اتصل فورًا بالإسعاف على الرقم 122 داخل العراق، أو توجه إلى أقرب مستشفى.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Download ===================== -->
+    <section class="download section" id="download">
+      <div class="container">
+        <div class="download-card reveal">
+          <div class="download-bg" aria-hidden="true">
+            <span class="blob blob-2"></span>
+            <span class="blob blob-4"></span>
+            <span class="float-shape shape-pill-1"></span>
+            <span class="float-shape shape-cross-1"></span>
+          </div>
+
+          <div class="download-content">
+            <span class="badge glass badge-light reveal" data-delay="0">
+              <span class="badge-dot"></span>
+              جاهز للتحميل الآن
+            </span>
+            <h2 class="download-title reveal" data-delay="100">حمّل صيدليتي الآن<br />وغيّر طريقة حصولك على الدواء</h2>
+            <p class="download-sub reveal" data-delay="200">متوفر على متجري Google Play و App Store، وادعمنا بمشاركة التطبيق مع عائلتك.</p>
+            <div class="download-actions reveal" data-delay="300">
+              <a href="#download" class="btn btn-white btn-lg" aria-label="تحميل من Google Play">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3 13 12 3.6 21.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm13.4 7.3L6.9 2.9l8.3 8.3 1.8-1.6Zm0 4.8-1.8-1.6-8.3 8.3 10.1-6.7Zm1.5-2.2 3 2c.9.6.9 1.9 0 2.5l-3 2v-6.5Z"/></svg>
+                <span class="store-text"><small>احصل عليه من</small><strong>Google Play</strong></span>
+              </a>
+              <a href="#download" class="btn btn-white btn-lg" aria-label="تحميل من App Store">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.75 2.25-4.07 2.35-4.14-1.28-1.87-3.27-2.13-3.98-2.16-1.69-.17-3.3 1-4.16 1-.86 0-2.19-.97-3.6-.94-1.85.03-3.56 1.08-4.51 2.74-1.93 3.34-.49 8.28 1.38 10.99.92 1.32 2.01 2.81 3.45 2.76 1.38-.06 1.9-.89 3.57-.89 1.67 0 2.14.89 3.6.86 1.49-.02 2.43-1.35 3.34-2.68 1.05-1.54 1.49-3.03 1.51-3.11-.03-.01-2.89-1.11-2.95-4.43ZM14.19 4.28c.76-.92 1.28-2.2 1.14-3.48-1.1.04-2.44.73-3.23 1.66-.71.82-1.33 2.14-1.16 3.4 1.23.1 2.49-.63 3.25-1.58Z"/></svg>
+                <span class="store-text"><small>احصل عليه من</small><strong>App Store</strong></span>
+              </a>
+            </div>
+            <p class="download-note reveal" data-delay="400">مسح الرمز لتحميل التطبيق مباشرة</p>
+          </div>
+
+          <div class="download-qr reveal" data-delay="200">
+            <div class="qr-box" aria-hidden="true">
+              <svg viewBox="0 0 120 120" class="qr-code">
+                <rect x="0" y="0" width="30" height="30" fill="#1A1A2E" rx="4"/><rect x="8" y="8" width="14" height="14" fill="#fff" rx="2"/>
+                <rect x="90" y="0" width="30" height="30" fill="#1A1A2E" rx="4"/><rect x="98" y="8" width="14" height="14" fill="#fff" rx="2"/>
+                <rect x="0" y="90" width="30" height="30" fill="#1A1A2E" rx="4"/><rect x="8" y="98" width="14" height="14" fill="#fff" rx="2"/>
+                <rect x="12" y="42" width="8" height="8" fill="#1A1A2E"/><rect x="42" y="10" width="8" height="8" fill="#1A1A2E"/><rect x="10" y="66" width="8" height="8" fill="#1A1A2E"/>
+                <rect x="52" y="42" width="8" height="8" fill="#1A1A2E"/><rect x="76" y="12" width="8" height="8" fill="#1A1A2E"/><rect x="66" y="62" width="8" height="8" fill="#1A1A2E"/><rect x="40" y="74" width="8" height="8" fill="#1A1A2E"/>
+                <rect x="44" y="52" width="8" height="8" fill="#1A1A2E"/><rect x="84" y="42" width="8" height="8" fill="#1A1A2E"/><rect x="12" y="52" width="8" height="8" fill="#1A1A2E"/><rect x="76" y="84" width="8" height="8" fill="#1A1A2E"/><rect x="92" y="68" width="8" height="8" fill="#1A1A2E"/>
+                <rect x="62" y="28" width="8" height="8" fill="#1A1A2E"/><rect x="28" y="28" width="8" height="8" fill="#1A1A2E"/><rect x="92" y="52" width="8" height="8" fill="#1A1A2E"/><rect x="52" y="66" width="8" height="8" fill="#1A1A2E"/><rect x="28" y="48" width="8" height="8" fill="#1A1A2E"/>
+                <rect x="66" y="44" width="8" height="8" fill="#1A1A2E"/><rect x="40" y="86" width="8" height="8" fill="#1A1A2E"/><rect x="86" y="86" width="8" height="8" fill="#1A1A2E"/><rect x="30" y="72" width="8" height="8" fill="#1A1A2E"/><rect x="104" y="30" width="8" height="8" fill="#1A1A2E"/>
+              </svg>
+            </div>
+            <div class="qr-mock" aria-hidden="true">
+              <span class="brand-logo">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+              </span>
+              <strong>صيدليتي</strong>
+              <small>مسح ضوئي للتحميل</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section class="contact section section-alt" id="contact">
+      <div class="section-bg-blobs" aria-hidden="true">
+        <span class="blob blob-3"></span>
+        <span class="blob blob-4"></span>
+      </div>
+      <div class="container">
+        <div class="section-head">
+          <span class="badge glass reveal">تواصل معنا</span>
+          <h2 class="section-title reveal" data-delay="100">فريقنا <span class="gradient-text">بخدمتك دائمًا</span></h2>
+          <p class="section-sub reveal" data-delay="200">لأي استفسار أو اقتراح، لا تتردد في مراسلتنا — نرد خلال 24 ساعة.</p>
+        </div>
+
+        <div class="contact-grid">
+          <a href="mailto:support@saydalati.iq" class="contact-card reveal" data-delay="0">
+            <span class="contact-icon" style="--fc:#1976D2">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <h3>البريد الإلكتروني</h3>
+            <p>support@saydalati.iq</p>
+          </a>
+          <a href="tel:+9640000000000" class="contact-card reveal" data-delay="100">
+            <span class="contact-icon" style="--fc:#9C27B0">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+            </span>
+            <h3>رقم الهاتف</h3>
+            <p dir="ltr">+964 000 000 0000</p>
+          </a>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="contact-card reveal" data-delay="200">
+            <span class="contact-icon" style="--fc:#4CAF50">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3>المقر الرئيسي</h3>
+            <p>بغداد، العراق — شارع الكرادة</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="footer-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path d="M0,50 C240,90 420,10 720,40 C1020,70 1220,90 1440,30 L1440,90 L0,90 Z" fill="#1A1A2E"/>
+      </svg>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand-light" aria-label="صيدليتي - الرئيسية">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+          </span>
+          <span class="brand-name">صيدليتي</span>
+        </a>
+        <p class="footer-desc">منصة عراقية تربطك بأقرب الصيدليات. ارفع وصفتك، قارن العروض، واختر الأفضل — صحتك تستحق الأسهل.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="فيسبوك">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.5 1.5-1.5h1.4V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7h3Z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="انستغرام">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="تويتر">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.7 3H21l-7.3 8.3L22.3 21h-6.7l-5.3-6.2L4.3 21H1l7.8-8.9L1.8 3h6.9l4.8 5.7L17.7 3Zm-1.2 16h1.9L6.6 4.9H4.6L16.5 19Z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="واتساب">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1a16 16 0 0 1-1.7-.6c-3-1.3-5-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .2 0 .9-.3 1.6Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="index.html#hero">الرئيسية</a></li>
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+          <li><a href="index.html#faq">الأسئلة الشائعة</a></li>
+          <li><a href="index.html#screenshots">لقطات التطبيق</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>التطبيق</h4>
+        <ul>
+          <li><a href="#download">تحميل للأندرويد</a></li>
+          <li><a href="#download">تحميل للآيفون</a></li>
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms.html">الشروط والأحكام</a></li>
+          <li><a href="404.html">مركز المساعدة</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+            <a href="mailto:support@saydalati.iq" dir="ltr">support@saydalati.iq</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <a href="tel:+9640000000000" dir="ltr">+964 000 000 0000</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>بغداد، العراق — شارع الكرادة</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© <span id="year">2026</span> صيدليتي — جميع الحقوق محفوظة.</p>
+        <p class="footer-links">
+          <a href="privacy-policy.html">سياسة الخصوصية</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html">الشروط والأحكام</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== Back to top ===================== -->
+  <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 14 7-7 7 7"/></svg>
+  </button>
+
+  <!-- ===================== Demo modal ===================== -->
+  <div class="modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoTitle" hidden>
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-content" role="document">
+      <button class="modal-close" data-close aria-label="إغلاق">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <span class="badge glass">عرض تعريفي</span>
+      <h3 id="demoTitle">صيدليتي في 60 ثانية</h3>
+      <div class="modal-video">
+        <span class="video-illus" aria-hidden="true">
+          <span class="blob blob-2"></span>
+          <span class="blob blob-4"></span>
+          <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <button class="btn btn-primary btn-lg" data-close>إغلاق العرض</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
