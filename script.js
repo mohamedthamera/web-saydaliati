@@ -110,9 +110,9 @@
   }
 
   /* ----------------------------------------------------------
-     5. Animated statistics counters (Arabic-Indic numerals)
+     5. Animated statistics counters (English numerals)
   ---------------------------------------------------------- */
-  const formatArabic = new Intl.NumberFormat("ar-IQ");
+  const formatArabic = new Intl.NumberFormat("ar-IQ-u-nu-latn");
 
   const animateCounter = (el) => {
     const target = parseInt(el.dataset.count || "0", 10);
@@ -273,6 +273,18 @@
       e.preventDefault();
       const results = Object.keys(fields).map(validateField);
       if (results.every(Boolean)) {
+        if (window.SITE_STORE) {
+          const subjectSelect = $("#subject");
+          window.SITE_STORE.saveMessage({
+            name: fields.name.input.value.trim(),
+            email: fields.email.input.value.trim(),
+            subject: subjectSelect && subjectSelect.selectedIndex > 0
+              ? subjectSelect.options[subjectSelect.selectedIndex].text
+              : (subjectSelect ? subjectSelect.value : ""),
+            message: fields.message.input.value.trim(),
+            date: new Date().toISOString(),
+          });
+        }
         const success = $(".form-success");
         if (success) {
           success.classList.add("show");
@@ -360,5 +372,39 @@
     );
 
     sections.forEach((section) => spyObserver.observe(section));
+  }
+
+  /* ----------------------------------------------------------
+     13. QR code — directs to App Store download
+  ---------------------------------------------------------- */
+  const qrEl = $("#qrCode");
+  if (qrEl) {
+    const APP_STORE_URL = "https://apps.apple.com/us/app/%D8%B5%D9%8A%D8%AF%D9%84%D9%8A%D8%AA%D9%8A-saydalati/id6796813694?l=ar";
+
+    const createQrImage = () => {
+      const img = document.createElement("img");
+      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=10&data=${encodeURIComponent(APP_STORE_URL)}`;
+      img.width = 150;
+      img.height = 150;
+      img.alt = "QR code لتحميل تطبيق صيدليتي من App Store";
+      return img;
+    };
+
+    if (window.QRCode) {
+      try {
+        new QRCode(qrEl, {
+          text: APP_STORE_URL,
+          width: 150,
+          height: 150,
+          colorDark: "#1A1A2E",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      } catch (err) {
+        qrEl.replaceWith(createQrImage());
+      }
+    } else {
+      qrEl.replaceWith(createQrImage());
+    }
   }
 })();

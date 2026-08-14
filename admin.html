@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة تحكم صيدليتي</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body.admin-body { min-height: 100vh; background: var(--background); }
+
+    /* ---------- Login ---------- */
+    .admin-login {
+      min-height: 100vh; display: grid; place-items: center; padding: 2rem;
+      background:
+        radial-gradient(600px 400px at 85% 10%, rgba(25,118,210,.12), transparent 60%),
+        radial-gradient(500px 380px at 10% 90%, rgba(156,39,176,.10), transparent 60%),
+        var(--background);
+    }
+    .login-card {
+      width: 100%; max-width: 400px; padding: 2.4rem; border-radius: var(--radius-lg);
+      background: var(--surface); box-shadow: var(--shadow-lg); text-align: center;
+    }
+    .login-card .brand-logo { width: 52px; height: 52px; border-radius: 15px; margin-inline: auto; }
+    .login-card h1 { font-size: 1.35rem; margin: 1rem 0 .25rem; }
+    .login-card p { color: var(--text-secondary); font-size: var(--fs-sm); margin-bottom: 1.5rem; }
+    .login-card input {
+      width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--divider); border-radius: var(--radius-sm);
+      font: inherit; margin-bottom: .9rem; text-align: center; direction: ltr;
+    }
+    .login-card input:focus { outline: none; border-color: var(--primary); }
+    .login-error { color: var(--error); font-size: var(--fs-sm); min-height: 1.4em; margin-bottom: .5rem; }
+    .login-hint { margin-top: 1.2rem; font-size: var(--fs-xs); color: var(--text-secondary); }
+    .login-hint code { background: var(--background); padding: .1rem .4rem; border-radius: 6px; direction: ltr; display: inline-block; }
+
+    /* ---------- Dashboard layout ---------- */
+    .admin-dashboard { min-height: 100vh; display: flex; flex-direction: column; }
+    .admin-topbar {
+      position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 1rem;
+      padding: .8rem 1.4rem; background: var(--text-primary); color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .admin-topbar .brand { display: flex; align-items: center; gap: .7rem; font-weight: 800; }
+    .admin-topbar .brand small { font-weight: 400; color: rgba(255,255,255,.65); }
+    .admin-topbar-spacer { flex: 1; }
+    .admin-topbar .toplink {
+      color: rgba(255,255,255,.85); font-size: var(--fs-sm); padding: .45rem .9rem;
+      border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius-pill);
+      text-decoration: none; transition: .2s;
+    }
+    .admin-topbar .toplink:hover { background: rgba(255,255,255,.12); }
+    .btn-logout { background: rgba(239,83,80,.18); color: #FF8A80; }
+
+    .admin-tabs {
+      display: flex; gap: .4rem; padding: .9rem 1.4rem 0; background: var(--text-primary);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .admin-tab-btn {
+      display: flex; align-items: center; gap: .5rem; padding: .6rem 1.2rem; font: 600 .95rem var(--font);
+      color: rgba(255,255,255,.75); background: transparent; border: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      cursor: pointer; transition: .2s;
+    }
+    .admin-tab-btn:hover { color: #fff; }
+    .admin-tab-btn.active { background: var(--background); color: var(--text-primary); }
+    .tab-badge {
+      min-width: 20px; height: 20px; padding: 0 5px; border-radius: var(--radius-pill);
+      background: var(--error); color: #fff; font-size: .72rem; font-weight: 700;
+      display: inline-grid; place-items: center;
+    }
+
+    .admin-main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 1.6rem 1.4rem 4rem; }
+    .admin-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .admin-panel-head h2 { font-size: 1.3rem; }
+    .admin-panel-head p { color: var(--text-secondary); font-size: var(--fs-sm); }
+
+    .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.4rem; }
+    .stat-card { background: var(--surface); border-radius: var(--radius-md); padding: 1.1rem 1.3rem; box-shadow: var(--shadow-sm); }
+    .stat-card strong { display: block; font-size: 1.6rem; color: var(--primary); }
+    .stat-card span { color: var(--text-secondary); font-size: var(--fs-sm); }
+
+    /* ---------- Messages ---------- */
+    .msg-toolbar { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .msg-filter { padding: .5rem 1rem; border: 1.5px solid var(--divider); border-radius: var(--radius-sm); font: 500 .9rem var(--font); background: var(--surface); }
+    .msg-list { display: flex; flex-direction: column; gap: .9rem; }
+    .msg-card {
+      background: var(--surface); border-radius: var(--radius-md); padding: 1.1rem 1.3rem;
+      box-shadow: var(--shadow-sm); border-inline-start: 4px solid var(--divider);
+    }
+    .msg-card.unread { border-inline-start-color: var(--primary); background: linear-gradient(90deg, rgba(25,118,210,.05), var(--surface) 35%); }
+    .msg-head { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+    .msg-head strong { font-size: 1.02rem; }
+    .msg-subject { font-size: var(--fs-xs); background: var(--gradient-soft); color: var(--primary-dark); padding: .2rem .6rem; border-radius: var(--radius-pill); font-weight: 600; }
+    .msg-date { color: var(--text-secondary); font-size: var(--fs-xs); margin-inline-start: auto; }
+    .msg-email { color: var(--primary); font-size: var(--fs-sm); text-decoration: none; direction: ltr; }
+    .msg-body { margin: .7rem 0 .9rem; color: var(--text-primary); line-height: 1.8; white-space: pre-wrap; background: var(--background); border-radius: var(--radius-sm); padding: .8rem 1rem; }
+    .msg-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .msg-btn {
+      padding: .4rem .95rem; font: 600 .85rem var(--font); border-radius: var(--radius-pill); cursor: pointer;
+      border: 1.5px solid var(--divider); background: var(--surface); color: var(--text-primary); transition: .2s;
+    }
+    .msg-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .msg-btn.danger:hover { border-color: var(--error); color: var(--error); }
+    .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-secondary); }
+    .empty-state svg { opacity: .35; margin-bottom: .8rem; }
+
+    /* ---------- Content editor ---------- */
+    .page-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
+    .page-chip {
+      padding: .5rem 1.1rem; border-radius: var(--radius-pill); border: 1.5px solid var(--divider);
+      background: var(--surface); font: 600 .9rem var(--font); color: var(--text-secondary); cursor: pointer; transition: .2s;
+    }
+    .page-chip.active { background: var(--gradient-primary); color: #fff; border-color: transparent; }
+    .content-group { margin-bottom: 1.6rem; }
+    .content-group h3 {
+      font-size: .95rem; color: var(--primary-dark); margin-bottom: .8rem; padding-bottom: .5rem;
+      border-bottom: 1px solid var(--divider);
+    }
+    .field-card { background: var(--surface); border-radius: var(--radius-md); padding: .95rem 1.1rem; margin-bottom: .8rem; box-shadow: var(--shadow-xs); }
+    .field-label { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .field-label strong { font-size: .93rem; }
+    .field-selector {
+      font-size: .72rem; color: var(--text-secondary); font-family: ui-monospace, Menlo, monospace;
+      background: var(--background); padding: .12rem .5rem; border-radius: 6px; direction: ltr;
+    }
+    .field-changed { font-size: .72rem; color: var(--warning); font-weight: 700; display: none; }
+    .field-card.changed .field-changed { display: inline; }
+    .field-card textarea {
+      width: 100%; min-height: 74px; resize: vertical; padding: .7rem .9rem; font: 500 .92rem var(--font);
+      border: 1.5px solid var(--divider); border-radius: var(--radius-sm); background: #fff; color: var(--text-primary);
+    }
+    .field-card textarea:focus { outline: none; border-color: var(--primary); }
+    body[data-theme="dark"] .field-card textarea { background: #1F2437; color: #fff; }
+    .field-foot { display: flex; justify-content: space-between; gap: 1rem; margin-top: .5rem; }
+    .field-foot small { color: transparent; font-size: .75rem; }
+    .field-card.changed .field-foot small.auto-saved { color: var(--success); }
+    .revert-btn {
+      font-size: .8rem; background: none; border: 0; color: var(--text-secondary); cursor: pointer; text-decoration: underline;
+    }
+    .revert-btn:hover { color: var(--error); }
+
+    .save-bar {
+      position: sticky; bottom: 1rem; z-index: 40; display: flex; align-items: center; gap: 1rem;
+      background: var(--text-primary); color: #fff; border-radius: var(--radius-md); padding: .85rem 1.3rem;
+      box-shadow: var(--shadow-lg); margin-top: 1.5rem;
+    }
+    .save-bar .save-status { flex: 1; font-size: var(--fs-sm); color: rgba(255,255,255,.8); }
+    .save-bar.saved .save-status { color: #7BD88F; }
+
+    /* ---------- Settings ---------- */
+    .settings-card { background: var(--surface); border-radius: var(--radius-md); padding: 1.4rem; margin-bottom: 1.2rem; box-shadow: var(--shadow-sm); }
+    .settings-card h3 { margin-bottom: .4rem; }
+    .settings-card p { color: var(--text-secondary); font-size: var(--fs-sm); margin-bottom: 1rem; }
+    .settings-card input { width: 100%; max-width: 320px; padding: .7rem 1rem; border: 1.5px solid var(--divider); border-radius: var(--radius-sm); font: inherit; margin-bottom: .7rem; }
+    .settings-card input:focus { outline: none; border-color: var(--primary); }
+    .settings-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    #toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translate(-50%, 20px); z-index: 100;
+      background: var(--text-primary); color: #fff; padding: .75rem 1.5rem; border-radius: var(--radius-pill);
+      font-size: var(--fs-sm); opacity: 0; pointer-events: none; transition: .3s; box-shadow: var(--shadow-lg);
+    }
+    #toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    [hidden] { display: none !important; }
+    @media (max-width: 720px) {
+      .stat-cards { grid-template-columns: 1fr; }
+      .admin-topbar { flex-wrap: wrap; }
+      .admin-tabs { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- ===================== Login ===================== -->
+  <section class="admin-login" id="loginScreen">
+    <div class="login-card">
+      <span class="brand-logo" style="display:grid;place-items:center;background:var(--gradient-primary);color:#fff">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+      </span>
+      <h1>لوحة تحكم صيدليتي</h1>
+      <p>أدخل كلمة المرور للمتابعة</p>
+      <input type="password" id="loginPass" placeholder="كلمة المرور" autocomplete="current-password" />
+      <p class="login-error" id="loginError" role="alert"></p>
+      <button class="btn btn-primary btn-lg" id="loginBtn" style="width:100%">دخول</button>
+      <p class="login-hint">كلمة المرور الافتراضية: <code>admin123</code><br />غيّرها من الإعدادات بعد الدخول.</p>
+    </div>
+  </section>
+
+  <!-- ===================== Dashboard ===================== -->
+  <div class="admin-dashboard" id="dashboard" hidden>
+    <header class="admin-topbar">
+      <a class="brand" aria-label="صيدليتي - لوحة التحكم">
+        <span class="brand-logo" style="display:grid;place-items:center;background:var(--gradient-primary);color:#fff">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+        </span>
+        <span>لوحة تحكم صيدليتي <small>— إدارة الموقع</small></span>
+      </a>
+      <div class="admin-topbar-spacer"></div>
+      <a class="toplink" href="index.html" target="_blank" rel="noopener">زيارة الموقع</a>
+      <button class="toplink btn-logout" id="logoutBtn" type="button">تسجيل الخروج</button>
+    </header>
+
+    <nav class="admin-tabs" aria-label="أقسام لوحة التحكم">
+      <button class="admin-tab-btn active" data-tab="messages" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5Z"/></svg>
+        الرسائل <span class="tab-badge" id="unreadBadge" hidden>0</span>
+      </button>
+      <button class="admin-tab-btn" data-tab="content" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        تعديل المحتوى
+      </button>
+      <button class="admin-tab-btn" data-tab="settings" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+        الإعدادات
+      </button>
+    </nav>
+
+    <main class="admin-main">
+
+      <!-- ===== Messages tab ===== -->
+      <section id="tab-messages" class="admin-tab">
+        <div class="admin-panel-head">
+          <div>
+            <h2>رسائل التواصل</h2>
+            <p>الرسائل المرسلة من نموذج التواصل في صفحة «تواصل معنا».</p>
+          </div>
+        </div>
+
+        <div class="stat-cards">
+          <div class="stat-card"><strong id="statTotal">0</strong><span>إجمالي الرسائل</span></div>
+          <div class="stat-card"><strong id="statUnread">0</strong><span>غير مقروءة</span></div>
+          <div class="stat-card"><strong id="statToday">0</strong><span>اليوم</span></div>
+        </div>
+
+        <div class="msg-toolbar">
+          <select class="msg-filter" id="msgFilter" aria-label="فلترة الرسائل">
+            <option value="all">كل الرسائل</option>
+            <option value="unread">غير المقروءة فقط</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="exportBtn" type="button">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+            تصدير JSON
+          </button>
+        </div>
+
+        <div class="msg-list" id="messagesList"></div>
+      </section>
+
+      <!-- ===== Content tab ===== -->
+      <section id="tab-content" class="admin-tab" hidden>
+        <div class="admin-panel-head">
+          <div>
+            <h2>تعديل محتوى الموقع</h2>
+            <p>عدّل النصوص في أي صفحة ثم اضغط «حفظ التغييرات» — تظهر التعديلات فورًا على الموقع في نفس المتصفح.</p>
+          </div>
+        </div>
+
+        <div class="page-chips" id="pageChips"></div>
+        <div id="contentFields"></div>
+
+        <div class="save-bar" id="saveBar">
+          <span class="save-status" id="saveStatus">لم يتم حفظ التغييرات بعد</span>
+          <button class="btn btn-white" id="saveBtn" type="button">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            حفظ التغييرات
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== Settings tab ===== -->
+      <section id="tab-settings" class="admin-tab" hidden>
+        <div class="admin-panel-head">
+          <div>
+            <h2>الإعدادات</h2>
+            <p>إدارة كلمة المرور وبيانات اللوحة.</p>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>تغيير كلمة المرور</h3>
+          <p>كلمة المرور الحالية: <code>admin123</code> (الافتراضية) — يُنصح بتغييرها.</p>
+          <input type="password" id="newPass1" placeholder="كلمة المرور الجديدة" autocomplete="new-password" />
+          <input type="password" id="newPass2" placeholder="تأكيد كلمة المرور الجديدة" autocomplete="new-password" />
+          <div class="settings-row">
+            <button class="btn btn-primary" id="changePassBtn" type="button">تحديث كلمة المرور</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>المحتوى</h3>
+          <p>استعادة جميع النصوص إلى القيم الافتراضية وتجاهل كل التعديلات المحفوظة.</p>
+          <div class="settings-row">
+            <button class="btn btn-dark" id="resetContentBtn" type="button">استعادة المحتوى الافتراضي</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>الرسائل</h3>
+          <p>حذف جميع رسائل التواصل المحفوظة نهائيًا.</p>
+          <div class="settings-row">
+            <button class="btn btn-dark" id="clearMessagesBtn" type="button">حذف جميع الرسائل</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>ملاحظة مهمة</h3>
+          <p>
+            لوحة التحكم هذه تعمل بتخزين المتصفح (localStorage) — الرسائل والتعديلات تُحفظ على نفس المتصفح/الجهاز فقط.
+            لاستقبال الرسائل ومشاركة التعديلات بين جميع الزوار، تحتاج ربط الموقع بخادم (Backend) مثل Formspree أو Firebase.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" role="status"></div>
+
+  <script src="content-schema.js" defer></script>
+  <script src="admin.js" defer></script>
+</body>
+</html>
