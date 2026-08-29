@@ -375,25 +375,26 @@
   }
 
   /* ----------------------------------------------------------
-     13. QR code — directs to App Store download
+     13. QR code — directs to smart download page
+         (redirects to App Store on iOS / Google Play on Android)
   ---------------------------------------------------------- */
   const qrEl = $("#qrCode");
   if (qrEl) {
-    const APP_STORE_URL = "https://apps.apple.com/us/app/%D8%B5%D9%8A%D8%AF%D9%84%D9%8A%D8%AA%D9%8A-saydalati/id6796813694?l=ar";
+    const DOWNLOAD_URL = `https://${window.location.host || "saydaliati.com"}/app-download.html`;
 
     const createQrImage = () => {
       const img = document.createElement("img");
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=10&data=${encodeURIComponent(APP_STORE_URL)}`;
+      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&margin=10&data=${encodeURIComponent(DOWNLOAD_URL)}`;
       img.width = 150;
       img.height = 150;
-      img.alt = "QR code لتحميل تطبيق صيدليتي من App Store";
+      img.alt = "QR code لتحميل تطبيق صيدليتي";
       return img;
     };
 
     if (window.QRCode) {
       try {
         new QRCode(qrEl, {
-          text: APP_STORE_URL,
+          text: DOWNLOAD_URL,
           width: 150,
           height: 150,
           colorDark: "#1A1A2E",
